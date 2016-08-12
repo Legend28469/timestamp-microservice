@@ -20,10 +20,16 @@ app.get("/:date", function (req, res) {
             unix: Number(formattedDate),
             natural: newDate
         });
+    } else if (moment(formattedDate).isValid()) {
+        var unixTime = moment(formattedDate).format("X");
+        res.json({
+            unix: unixTime,
+            natural: moment(formattedDate).format("MMMM DD, YYYY")
+        });
     } else {
         res.json({
-            unix: "Test",
-            natural: "Test"
+            unix: null,
+            natural: null
         });
     }
 });
