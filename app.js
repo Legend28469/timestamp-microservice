@@ -17,7 +17,7 @@ app.get("/:date", function (req, res) {
     if (parseInt(formattedDate)) {
         var newDate = moment.unix(formattedDate).format("MMMM DD, YYYY");
         res.json({
-            unix: formattedDate,
+            unix: Number(formattedDate),
             natural: newDate
         });
     } else {
